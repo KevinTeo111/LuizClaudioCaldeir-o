@@ -24,7 +24,7 @@ export function MoreWork() {
               Across industries, <span className="text-grad">one standard.</span>
             </>
           }
-          sub="Open a line to unfold the challenge, the result and a live demo of the product type."
+          sub="Open a line to unfold the challenge, the result and the stack behind it."
         />
 
         <Reveal className="mt-12 border-t border-line" amount={0.1} stagger={0.06}>
@@ -63,7 +63,7 @@ export function MoreWork() {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.7, ease }}
                     >
-                      <div className="grid gap-8 pb-10 md:grid-cols-[1fr_1.1fr] md:pl-[88px]">
+                      <div className={cn("grid gap-8 pb-10 md:pl-[88px]", (p.video || p.image) && "md:grid-cols-[1fr_1.1fr]")}>
                         <div>
                           <p className="text-[15px] font-medium text-muted">{p.summary}</p>
                           <dl className="mt-5 text-[13.5px]">
@@ -86,9 +86,16 @@ export function MoreWork() {
                             </div>
                           </div>
                         </div>
-                        <motion.div initial={{ opacity: 0, y: 16, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ delay: 0.2, duration: 0.7, ease }}>
-                          <ScenePreview scene={p.scene} video={p.video} className="rounded-2xl border border-line-2 shadow-[var(--shadow)]" />
-                        </motion.div>
+                        {p.video ? (
+                          <motion.div initial={{ opacity: 0, y: 16, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ delay: 0.2, duration: 0.7, ease }}>
+                            <ScenePreview scene={p.scene} video={p.video} className="rounded-2xl border border-line-2 shadow-[var(--shadow)]" />
+                          </motion.div>
+                        ) : p.image ? (
+                          <motion.div initial={{ opacity: 0, y: 16, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ delay: 0.2, duration: 0.7, ease }}>
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img src={p.image} alt={p.title} className="aspect-[16/10] w-full rounded-2xl border border-line-2 object-cover shadow-[var(--shadow)]" loading="lazy" />
+                          </motion.div>
+                        ) : null}
                       </div>
                     </motion.div>
                   ) : null}

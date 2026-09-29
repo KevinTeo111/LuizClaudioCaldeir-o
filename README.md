@@ -39,7 +39,7 @@ All copy lives in `src/data`; nothing personal is hard-coded in components.
 | File                          | What it holds                                              |
 | ----------------------------- | ---------------------------------------------------------- |
 | `site.ts`                     | name, role, location, email, socials, hero stats, core stack|
-| `projects.ts`                 | featured + grid projects, metrics, stack, scene per project|
+| `projects.ts`                 | featured + more projects, metrics, stack, scene, image     |
 | `showreel.ts`                 | hero clips: industry, one-line story, linked project, video|
 | `services.ts`                 | the six service cards                                      |
 | `experience.ts`               | career timeline                                            |
