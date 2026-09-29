@@ -21,7 +21,7 @@ export function MobileScene({ active = true }: { active?: boolean }) {
   const done = phase >= 4;
 
   return (
-    <div className="absolute inset-0 overflow-hidden bg-[radial-gradient(70%_70%_at_70%_30%,rgba(34,211,238,.16),transparent_60%),#0a0a12] text-ink">
+    <div className="absolute inset-0 overflow-hidden bg-[radial-gradient(70%_70%_at_70%_30%,rgba(255,106,248,.16),transparent_60%),#0a0a12] text-ink">
       {/* orbiting rings */}
       <div className="absolute left-1/2 top-1/2 size-[70cqw] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/[0.05]" />
       <div className="absolute left-1/2 top-1/2 size-[52cqw] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/[0.06]" />

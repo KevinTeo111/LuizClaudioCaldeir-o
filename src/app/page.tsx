@@ -7,12 +7,12 @@ import { About } from "@/components/sections/About";
 import { Certifications } from "@/components/sections/Certifications";
 import { Contact } from "@/components/sections/Contact";
 import { Experience } from "@/components/sections/Experience";
-import { FeaturedWork } from "@/components/sections/FeaturedWork";
+import { DesignShow } from "@/components/sections/DesignShow";
 import { Hero } from "@/components/sections/Hero";
-import { MoreWork } from "@/components/sections/MoreWork";
+import { Process } from "@/components/sections/Process";
+import { Projects } from "@/components/sections/Projects";
 import { Services } from "@/components/sections/Services";
 import { Skills } from "@/components/sections/Skills";
-import { StackStrip } from "@/components/sections/StackStrip";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { Cursor } from "@/components/ui/Cursor";
 import { FloatingWorkana } from "@/components/ui/WorkanaButton";
@@ -26,14 +26,14 @@ export default function Page() {
         <Header />
         <main>
           <Hero />
-          <StackStrip />
-          <FeaturedWork />
-          <MoreWork />
+          <Process />
+          <Services />
+          <DesignShow />
+          <Projects />
+          <Testimonials />
           <Skills />
           <Experience />
           <Certifications />
-          <Testimonials />
-          <Services />
           <About />
           <Contact />
         </main>

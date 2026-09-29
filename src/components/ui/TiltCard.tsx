@@ -41,7 +41,7 @@ export function TiltCard({
   const ty = useSpring(useTransform(hover, [0, 1], [0, -lift]), { stiffness: 200, damping: 20 });
   const mx = useTransform(px, (v) => `${v * 100}%`);
   const my = useTransform(py, (v) => `${v * 100}%`);
-  const spot = useMotionTemplate`radial-gradient(420px circle at ${mx} ${my}, rgba(124,92,255,.18), rgba(34,211,238,.06) 40%, transparent 70%)`;
+  const spot = useMotionTemplate`radial-gradient(420px circle at ${mx} ${my}, rgba(105,94,254,.18), rgba(255,106,248,.06) 40%, transparent 70%)`;
   const spotOpacity = useSpring(hover, { stiffness: 200, damping: 25 });
 
   const onMove = (e: MouseEvent) => {

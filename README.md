@@ -1,12 +1,11 @@
 # Luiz — Portfolio
 
-Single-page portfolio for a senior full-stack engineer. The hero plays a
-cinematic showreel of real-world footage for each industry a project shipped
-in (retail, entertainment, SaaS, legal, AI operations, fintech, logistics,
-education) with a diagonal wipe between clips and the project named on every
-one. Further down, every project card runs a live, coded UI scene (dashboard,
-marketplace, realtime multi-device, mobile storefront, AI agent, editorial
-site) rather than a screenshot, so the work is shown, not described.
+Single-page portfolio for a senior full-stack engineer, following the structure,
+palette (dark #161626 with purple/pink accents, light process and certification
+sections) and Raleway typography of the reference site. The hero plays a cinematic
+showreel of real-world footage per industry with a diagonal wipe; the design show
+stacks shipped interfaces over a looping video; every project card opens a live,
+coded UI demo of the product type.
 
 ## Stack
 
@@ -50,9 +49,9 @@ All copy lives in `src/data`; nothing personal is hard-coded in components.
 | File                          | What it holds                                              |
 | ----------------------------- | ---------------------------------------------------------- |
 | `site.ts`                     | name, role, location, email, Workana link, socials, stats  |
-| `projects.ts`                 | featured + more projects, metrics, stack, scene, image     |
+| `projects.ts`                 | projects (image, metric, scene), filters, design-show list |
 | `showreel.ts`                 | hero clips: industry, one-line story, linked project, video|
-| `services.ts`                 | the six service cards                                      |
+| `services.ts`                 | service cards, process steps, client stats and map pins    |
 | `experience.ts`               | career timeline                                            |
 | `skills.ts`                   | skill groups, simple-icons slugs, proficiency levels       |
 | `certifications.ts`           | credentials (**placeholders until real ones are added**)   |
@@ -61,8 +60,10 @@ All copy lives in `src/data`; nothing personal is hard-coded in components.
 Optional assets:
 
 - `public/me.jpg` — portrait for the About section (a generated frame shows until it exists).
-- `public/work/*.jpg` — product images of the featured projects (captured from the live scenes);
-  they appear as thumbnails in the hero captions. `src/app/opengraph-image.jpg` is the link preview.
+- `public/cases/*.webp`, `public/design/*` — project card and design-show images (agency
+  mockups from the reference site; replace with your own product shots).
+- `public/fancy-background.mp4`, `public/world-map.svg` — design-show background and clients map.
+- `src/app/opengraph-image.jpg` — the link preview.
 - `public/certs/*.png` — set `image` on a certification to show the real certificate.
 - `public/hero/*.mp4` + `.jpg` — the hero clips (6 s, 720p, ~1 MB each, sourced from Mixkit's
   free licence) and their poster frames. Swap any of them for your own footage or a screen
@@ -75,9 +76,10 @@ Optional assets:
 src/app                 layout, page, globals.css, icon.svg, fonts
 src/data                all editable content
 src/components/layout   Preloader, Header, Footer
-src/components/sections Hero, StackStrip, FeaturedWork (sticky stack), MoreWork (accordion),
-                        Skills, Experience (accordion timeline), Certifications,
-                        Testimonials, Services, About, Contact
+src/components/sections Hero, Process (light), Services, DesignShow (sticky image stack
+                        over video), Projects (filter grid + live demo modal), Testimonials
+                        + Clients map, Skills, Experience (accordion), Certifications
+                        (light mosaic), About, Contact
 src/components/showreel IndustryReel (hero footage: autoplay, diagonal wipe, label,
                         caption, progress), ScenePreview and the six coded demo scenes
 src/components/ui       Reveal, TiltCard, Button (magnetic), Marquee, Lightbox,

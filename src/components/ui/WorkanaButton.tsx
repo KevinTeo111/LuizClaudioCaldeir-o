@@ -54,14 +54,14 @@ export function WorkanaButton({ size = "md", label = "Meet Luiz Claudio on Worka
       whileTap={{ scale: 0.97 }}
       className={cn(
         "group relative inline-flex items-center rounded-full font-extrabold tracking-tight text-white select-none",
-        "bg-[linear-gradient(92deg,#7c5cff,#5b8cff_55%,#22d3ee)] shadow-[0_18px_44px_-14px_rgba(124,92,255,.9)]",
-        "transition-shadow duration-500 hover:shadow-[0_22px_56px_-12px_rgba(34,211,238,.8)]",
+        "bg-[linear-gradient(92deg,#695efe,#a05dfd_55%,#ff6af8)] shadow-[0_18px_44px_-14px_rgba(105,94,254,.9)]",
+        "transition-shadow duration-500 hover:shadow-[0_22px_56px_-12px_rgba(255,106,248,.8)]",
         sizes[size],
         className,
       )}
     >
       {/* breathing glow ring */}
-      <span aria-hidden className="pointer-events-none absolute -inset-1 -z-10 rounded-full bg-[linear-gradient(92deg,#7c5cff,#22d3ee)] opacity-60 blur-md [animation:pulse-ring_2.2s_ease-out_infinite]" />
+      <span aria-hidden className="pointer-events-none absolute -inset-1 -z-10 rounded-full bg-[linear-gradient(92deg,#695efe,#ff6af8)] opacity-60 blur-md [animation:pulse-ring_2.2s_ease-out_infinite]" />
       <span aria-hidden className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-white/40" />
       {/* sheen sweep */}
       <span aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden rounded-full">

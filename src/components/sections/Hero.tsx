@@ -33,7 +33,7 @@ export function Hero() {
   const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "16%"]);
   const fade = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
-  const openCase = () => lenis?.scrollTo(`#work-${slide.project}`, { offset: -110, duration: 1.6 });
+  const openCase = () => lenis?.scrollTo(`#work-${slide.project}`, { offset: -140, duration: 1.6 });
 
   return (
     <section id="top" ref={ref} className="relative isolate min-h-[100svh] overflow-hidden bg-bg [perspective:1600px]">
@@ -69,8 +69,8 @@ export function Hero() {
             <span className="hidden lg:inline"> · {site.availability}</span>
           </motion.span>
 
-          <h1 className="mt-6 text-[clamp(36px,5.2vw,76px)] font-extrabold leading-[0.98] tracking-[-0.04em]">
-            {["I design and ship products", "that work in the real world."].map((line, i) => (
+          <h1 className="mt-6 text-[clamp(40px,5.6vw,80px)] font-extrabold leading-[0.98] tracking-[-0.04em]">
+            {["From idea", "to live."].map((line, i) => (
               <span key={line} className="block overflow-hidden pb-[0.08em]">
                 <motion.span
                   className={i === 1 ? "text-grad inline-block" : "inline-block"}
@@ -90,8 +90,8 @@ export function Hero() {
             animate={ready ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9, delay: 0.95, ease }}
           >
-            Senior full-stack engineer for SaaS platforms, marketplaces, realtime systems and AI-powered
-            products. Next.js, NestJS, PostgreSQL and Supabase, from first wireframe to production.
+            Wonderful design, seamless performance, 2.5× faster delivery. I design and build web products
+            that ship: UI/UX, web development, SaaS and e-commerce.
           </motion.p>
 
           <motion.div
@@ -101,8 +101,8 @@ export function Hero() {
             transition={{ duration: 0.9, delay: 1.1, ease }}
           >
             <WorkanaButton size="lg" />
-            <Button href="#work" variant="line" size="lg">
-              See the work
+            <Button href="#projects" variant="line" size="lg">
+              Explore the work
             </Button>
           </motion.div>
         </div>
@@ -135,7 +135,7 @@ export function Hero() {
           {heroStats.map((s) => (
             <div key={s.label} className="glass rounded-[var(--r-s)] px-5 py-4 transition duration-500 hover:-translate-y-1 hover:border-white/30 hover:bg-accent/20">
               <b className="block text-[clamp(26px,2.6vw,38px)] font-extrabold leading-none tracking-tight">
-                <Counter value={s.value} />
+                <Counter value={s.value} decimals={Number.isInteger(s.value) ? 0 : 1} />
                 <em className="text-grad not-italic">{s.suffix}</em>
               </b>
               <span className="mt-1.5 block text-[10.5px] font-bold uppercase tracking-[0.14em] text-ink-2/80">{s.label}</span>

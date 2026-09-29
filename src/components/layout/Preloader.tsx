@@ -65,7 +65,7 @@ export function Preloader() {
           />
           {/* accent sweep */}
           <motion.div
-            className="absolute inset-0 origin-left bg-[linear-gradient(92deg,#7c5cff,#22d3ee)]"
+            className="absolute inset-0 origin-left bg-[linear-gradient(92deg,#695efe,#ff6af8)]"
             initial={{ scaleX: 0 }}
             animate={{ scaleX: [0, 1, 1], originX: [0, 0, 1] }}
             exit={{ scaleX: 0, originX: 1 }}

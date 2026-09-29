@@ -4,10 +4,10 @@ import { site } from "@/data/site";
 import "./globals.css";
 
 // Self-hosted variable fonts (latin subsets from Google Fonts).
-const manrope = localFont({
-  src: "./fonts/Manrope.woff2",
-  variable: "--font-manrope",
-  weight: "200 800",
+const raleway = localFont({
+  src: "./fonts/Raleway.woff2",
+  variable: "--font-raleway",
+  weight: "100 900",
   display: "swap",
 });
 
@@ -47,7 +47,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${manrope.variable} ${jetbrains.variable}`}>
+    <html lang="en" className={`${raleway.variable} ${jetbrains.variable}`}>
       <body className="min-h-dvh">{children}</body>
     </html>
   );

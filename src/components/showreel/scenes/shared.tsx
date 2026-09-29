@@ -96,7 +96,7 @@ export function Phone({ children, className, glow }: { children: ReactNode; clas
     <div
       className={cn(
         "relative aspect-[9/19] overflow-hidden rounded-[3.2cqw] border-[0.35cqw] border-[#1d1d2c] bg-[#0b0b14] shadow-[0_2cqw_5cqw_-1cqw_rgba(0,0,0,.8)]",
-        glow && "shadow-[0_0_6cqw_-1cqw_rgba(124,92,255,.5)]",
+        glow && "shadow-[0_0_6cqw_-1cqw_rgba(105,94,254,.5)]",
         className,
       )}
     >

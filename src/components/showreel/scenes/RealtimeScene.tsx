@@ -21,9 +21,9 @@ export function RealtimeScene({ active = true }: { active?: boolean }) {
   const rating = phase >= 3;
 
   return (
-    <div className="absolute inset-0 overflow-hidden bg-[radial-gradient(60%_80%_at_50%_100%,rgba(124,92,255,.22),transparent_60%),#08080f] text-ink">
+    <div className="absolute inset-0 overflow-hidden bg-[radial-gradient(60%_80%_at_50%_100%,rgba(105,94,254,.22),transparent_60%),#08080f] text-ink">
       {/* stage lights */}
-      <div className="absolute inset-x-0 top-0 h-[40%] bg-[radial-gradient(40%_100%_at_30%_0%,rgba(34,211,238,.18),transparent),radial-gradient(40%_100%_at_70%_0%,rgba(255,79,216,.16),transparent)]" />
+      <div className="absolute inset-x-0 top-0 h-[40%] bg-[radial-gradient(40%_100%_at_30%_0%,rgba(255,106,248,.18),transparent),radial-gradient(40%_100%_at_70%_0%,rgba(255,79,216,.16),transparent)]" />
 
       {/* sync links */}
       <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 60" preserveAspectRatio="none" aria-hidden>
@@ -35,7 +35,7 @@ export function RealtimeScene({ active = true }: { active?: boolean }) {
               key="p1"
               r=".9"
               cy="30"
-              fill="#22d3ee"
+              fill="#ff6af8"
               initial={{ cx: 18, opacity: 0 }}
               animate={{ cx: 40, opacity: [0, 1, 1, 0] }}
               exit={{ opacity: 0 }}
@@ -47,7 +47,7 @@ export function RealtimeScene({ active = true }: { active?: boolean }) {
               key="p2"
               r=".9"
               cy="30"
-              fill="#ff4fd8"
+              fill="#ff6af8"
               initial={{ cx: 62, opacity: 0 }}
               animate={{ cx: 76, opacity: [0, 1, 1, 0] }}
               exit={{ opacity: 0 }}
@@ -183,7 +183,7 @@ export function RealtimeScene({ active = true }: { active?: boolean }) {
             </div>
             <div className="border-l border-white/[0.06] p-[1.2cqw]">
               <div className="mb-[0.7cqw] text-[0.85cqw] font-bold uppercase tracking-wider text-muted-2">Now</div>
-              <div className="rounded-[0.9cqw] bg-[linear-gradient(135deg,rgba(124,92,255,.35),rgba(255,79,216,.2))] p-[0.9cqw]">
+              <div className="rounded-[0.9cqw] bg-[linear-gradient(135deg,rgba(105,94,254,.35),rgba(255,79,216,.2))] p-[0.9cqw]">
                 <div className="text-[0.8cqw] text-ink-2">{singing ? "Table 12" : "Table 7"}</div>
                 <div className="truncate text-[1.05cqw] font-extrabold">{singing ? "Bohemian Rhapsody" : "Don't Stop Me Now"}</div>
                 <div className="mt-[0.7cqw] h-[0.4cqw] overflow-hidden rounded-full bg-white/15">
@@ -242,7 +242,7 @@ export function RealtimeScene({ active = true }: { active?: boolean }) {
                 {Array.from({ length: 14 }).map((_, i) => (
                   <motion.span
                     key={i}
-                    className="w-full origin-bottom rounded-t-[0.2cqw] bg-[linear-gradient(180deg,#ff4fd8,#7c5cff)]"
+                    className="w-full origin-bottom rounded-t-[0.2cqw] bg-[linear-gradient(180deg,#ff6af8,#695efe)]"
                     style={{ height: `${0.6 + ((i * 7) % 5) * 0.35}cqw` }}
                     animate={{ scaleY: [0.3, 1, 0.5, 0.9, 0.3] }}
                     transition={{ duration: 1.2 + (i % 4) * 0.2, repeat: Infinity, ease: "easeInOut" }}

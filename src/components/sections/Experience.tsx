@@ -32,7 +32,7 @@ export function Experience() {
 
         <div ref={ref} className="relative mt-16 flex flex-col gap-6">
           <div className="absolute left-[7px] top-0 h-full w-px bg-line md:left-[calc(220px-1px)] lg:left-[calc(260px-1px)]">
-            <motion.div className="h-full w-full origin-top bg-[linear-gradient(180deg,#7c5cff,#22d3ee)]" style={{ scaleY: line }} />
+            <motion.div className="h-full w-full origin-top bg-[linear-gradient(180deg,#695efe,#ff6af8)]" style={{ scaleY: line }} />
           </div>
 
           {experience.map((e, i) => {
@@ -43,7 +43,7 @@ export function Experience() {
                   <span
                     className={cn(
                       "absolute left-0 top-1.5 size-[15px] rounded-full border-[3px] border-bg transition-colors md:left-auto md:right-[-8px]",
-                      on ? "bg-[linear-gradient(135deg,#7c5cff,#22d3ee)] shadow-[0_0_0_4px_rgba(124,92,255,.2)]" : "bg-muted-2",
+                      on ? "bg-[linear-gradient(135deg,#695efe,#ff6af8)] shadow-[0_0_0_4px_rgba(105,94,254,.2)]" : "bg-muted-2",
                     )}
                   />
                   <div className="font-mono text-[12px] uppercase tracking-[0.18em] text-accent-2">{e.period}</div>

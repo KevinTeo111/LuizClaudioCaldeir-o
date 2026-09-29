@@ -21,7 +21,7 @@ export function DashboardScene({ active = true }: { active?: boolean }) {
         {/* sidebar */}
         <aside className="flex flex-col gap-[1.2cqw] border-r border-white/[0.06] bg-[#0f0f1a] p-[1.4cqw]">
           <div className="flex items-center gap-[0.7cqw] text-[1.2cqw] font-extrabold">
-            <span className="size-[1.6cqw] rounded-[0.5cqw] bg-[linear-gradient(135deg,#7c5cff,#22d3ee)]" />
+            <span className="size-[1.6cqw] rounded-[0.5cqw] bg-[linear-gradient(135deg,#695efe,#ff6af8)]" />
             Tenantly
           </div>
           <div className="mt-[0.8cqw] flex flex-col gap-[0.5cqw]">
@@ -44,7 +44,7 @@ export function DashboardScene({ active = true }: { active?: boolean }) {
             </div>
             <div className="h-[0.5cqw] overflow-hidden rounded-full bg-white/10">
               <motion.div
-                className="h-full rounded-full bg-[linear-gradient(90deg,#7c5cff,#22d3ee)]"
+                className="h-full rounded-full bg-[linear-gradient(90deg,#695efe,#ff6af8)]"
                 initial={{ width: "20%" }}
                 animate={{ width: ["20%", "81%", "81%", "20%"] }}
                 transition={{ duration: 8, repeat: Infinity, times: [0, 0.3, 0.9, 1] }}
@@ -108,12 +108,12 @@ export function DashboardScene({ active = true }: { active?: boolean }) {
               <svg viewBox="0 0 460 90" className="mt-[1cqw] min-h-0 w-full flex-1" preserveAspectRatio="none">
                 <defs>
                   <linearGradient id="dashFill" x1="0" x2="0" y1="0" y2="1">
-                    <stop offset="0" stopColor="#7c5cff" stopOpacity=".5" />
-                    <stop offset="1" stopColor="#7c5cff" stopOpacity="0" />
+                    <stop offset="0" stopColor="#695efe" stopOpacity=".5" />
+                    <stop offset="1" stopColor="#695efe" stopOpacity="0" />
                   </linearGradient>
                   <linearGradient id="dashStroke" x1="0" x2="1">
-                    <stop offset="0" stopColor="#7c5cff" />
-                    <stop offset="1" stopColor="#22d3ee" />
+                    <stop offset="0" stopColor="#695efe" />
+                    <stop offset="1" stopColor="#ff6af8" />
                   </linearGradient>
                 </defs>
                 {[20, 40, 60, 80].map((y) => (
@@ -141,7 +141,7 @@ export function DashboardScene({ active = true }: { active?: boolean }) {
                   cx="460"
                   cy="4"
                   r="4"
-                  fill="#22d3ee"
+                  fill="#ff6af8"
                   initial={{ opacity: 0, scale: 0 }}
                   animate={{ opacity: [0, 1, 1], scale: [0, 1.6, 1] }}
                   transition={{ delay: 2.2, duration: 0.8 }}
@@ -161,7 +161,7 @@ export function DashboardScene({ active = true }: { active?: boolean }) {
                 {bars.map((h, i) => (
                   <motion.span
                     key={i}
-                    className="flex-1 origin-bottom rounded-t-[0.3cqw] bg-[linear-gradient(180deg,#22d3ee,#7c5cff)]"
+                    className="flex-1 origin-bottom rounded-t-[0.3cqw] bg-[linear-gradient(180deg,#ff6af8,#695efe)]"
                     style={{ height: `${h}%` }}
                     initial={{ scaleY: 0 }}
                     animate={{ scaleY: [0, 1, 1, 0.85, 1] }}

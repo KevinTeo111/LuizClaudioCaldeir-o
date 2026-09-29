@@ -21,36 +21,17 @@ export const site = {
 } as const;
 
 export const nav = [
-  { label: "Work", href: "#work" },
-  { label: "Skills", href: "#skills" },
-  { label: "Experience", href: "#experience" },
-  { label: "Certifications", href: "#certifications" },
   { label: "Services", href: "#services" },
-  { label: "About", href: "#about" },
+  { label: "Projects", href: "#projects" },
+  { label: "Client Testimonial", href: "#testimonials" },
+  { label: "Technology Stacks", href: "#skills" },
+  { label: "Certifications", href: "#certifications" },
+  { label: "About Me", href: "#about" },
 ] as const;
 
 export const heroStats = [
-  { value: 8, suffix: "+", label: "Years shipping" },
-  { value: 40, suffix: "+", label: "Products launched" },
-  { value: 12, suffix: "", label: "Countries served" },
-  { value: 100, suffix: "%", label: "Delivered on scope" },
-] as const;
-
-/** Core stack shown in the proof strip under the hero (simple-icons slugs). */
-export const coreStack = [
-  ["nextdotjs", "Next.js"],
-  ["react", "React"],
-  ["typescript", "TypeScript"],
-  ["nestjs", "NestJS"],
-  ["nodedotjs", "Node.js"],
-  ["postgresql", "PostgreSQL"],
-  ["prisma", "Prisma"],
-  ["supabase", "Supabase"],
-  ["redis", "Redis"],
-  ["tailwindcss", "Tailwind CSS"],
-  ["docker", "Docker"],
-  ["amazonwebservices", "AWS"],
-  ["cloudflare", "Cloudflare"],
-  ["stripe", "Stripe"],
-  ["anthropic", "Claude API"],
+  { value: 8, suffix: "+", label: "Years experience" },
+  { value: 40, suffix: "+", label: "Products shipped" },
+  { value: 2.5, suffix: "×", label: "Faster delivery" },
+  { value: 100, suffix: "%", label: "Tested & quality" },
 ] as const;

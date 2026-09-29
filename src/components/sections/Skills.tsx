@@ -14,16 +14,16 @@ export function Skills() {
 
   return (
     <section id="skills" className="relative py-24 md:py-32">
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(60%_50%_at_50%_0%,rgba(124,92,255,.12),transparent_70%)]" />
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(60%_50%_at_50%_0%,rgba(105,94,254,.12),transparent_70%)]" />
       <div className="wrap">
         <SectionHeader
-          kicker="Skills & tools"
+          kicker="Technology Stacks"
           title={
             <>
               The stack I <span className="text-grad">ship with.</span>
             </>
           }
-          sub="A modern, production-proven toolkit. The right technology for each product, front to back."
+          sub="A modern, production-proven stack: the right technology for each product, front to back."
         />
 
         <div className="mt-12 flex flex-wrap gap-2" role="tablist" aria-label="Skill areas">
@@ -62,7 +62,7 @@ export function Skills() {
                   transition={{ delay: i * 0.04, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <TiltCard tilt={9} lift={6} className="grad-border flex h-full flex-col items-center rounded-[var(--r-s)] border border-line bg-bg-2 px-3 py-6 text-center">
-                    <span className="grid size-16 place-items-center rounded-2xl bg-white/[0.04] ring-1 ring-white/[0.06]">
+                    <span className="grid size-[60px] place-items-center rounded-2xl bg-white">
                       <BrandIcon slug={s.icon} label={s.name} className="size-9" color />
                     </span>
                     <h4 className="mt-4 text-[14px] font-bold text-ink-2">{s.name}</h4>
@@ -70,7 +70,7 @@ export function Skills() {
                       {[1, 2, 3, 4, 5].map((n) => (
                         <motion.span
                           key={n}
-                          className={cn("h-1 w-4 rounded-full", n <= s.level ? "bg-[linear-gradient(90deg,#7c5cff,#22d3ee)]" : "bg-white/10")}
+                          className={cn("h-1 w-4 rounded-full", n <= s.level ? "bg-[linear-gradient(90deg,#695efe,#ff6af8)]" : "bg-white/10")}
                           initial={{ scaleX: 0 }}
                           animate={{ scaleX: 1 }}
                           transition={{ delay: 0.2 + i * 0.04 + n * 0.05, duration: 0.4 }}

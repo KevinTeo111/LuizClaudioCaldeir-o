@@ -8,9 +8,9 @@ export function Contact() {
   return (
     <section id="contact" className="relative py-24 md:py-32">
       <div className="wrap">
-        <Reveal className="noise relative overflow-hidden rounded-[var(--r-l)] bg-[linear-gradient(120deg,#7c5cff_0%,#5b8cff_45%,#22d3ee_100%)] px-6 py-16 text-center md:px-12 md:py-24" amount={0.3}>
+        <Reveal className="noise relative overflow-hidden rounded-[var(--r-l)] bg-[linear-gradient(120deg,#695efe_0%,#a05dfd_45%,#ff6af8_100%)] px-6 py-16 text-center md:px-12 md:py-24" amount={0.3}>
           <span className="pointer-events-none absolute -right-24 -top-32 size-[420px] rounded-full bg-white/20 blur-2xl" />
-          <span className="pointer-events-none absolute -bottom-40 -left-24 size-[380px] rounded-full bg-[#ff4fd8]/30 blur-3xl" />
+          <span className="pointer-events-none absolute -bottom-40 -left-24 size-[380px] rounded-full bg-[#ff6af8]/30 blur-3xl" />
           <RevealItem>
             <span className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/15 px-4 py-2 text-[11.5px] font-bold uppercase tracking-[0.2em] text-white backdrop-blur">
               <span className="size-2 animate-pulse rounded-full bg-white" /> {site.availability}

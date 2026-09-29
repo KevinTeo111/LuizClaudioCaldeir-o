@@ -135,7 +135,7 @@ export function AIScene({ active = true }: { active?: boolean }) {
                     "flex items-center gap-[0.4cqw] rounded-full px-[1cqw] py-[0.45cqw] text-[0.9cqw] font-bold " +
                     (approved ? "bg-green text-bg" : "bg-accent text-white")
                   }
-                  animate={!approved ? { boxShadow: ["0 0 0 0 rgba(124,92,255,.6)", "0 0 0 0.8cqw rgba(124,92,255,0)"] } : {}}
+                  animate={!approved ? { boxShadow: ["0 0 0 0 rgba(105,94,254,.6)", "0 0 0 0.8cqw rgba(105,94,254,0)"] } : {}}
                   transition={{ duration: 1.2, repeat: Infinity }}
                 >
                   {approved ? <Check className="size-[0.9cqw]" /> : null}

@@ -20,7 +20,7 @@ type Props = {
 
 const variants: Record<Variant, string> = {
   accent:
-    "bg-accent text-white shadow-[0_18px_40px_-16px_rgba(124,92,255,.8)] hover:shadow-[0_22px_50px_-14px_rgba(124,92,255,.9)]",
+    "bg-accent text-white shadow-[0_18px_40px_-16px_rgba(105,94,254,.8)] hover:shadow-[0_22px_50px_-14px_rgba(105,94,254,.9)]",
   line: "border border-line-2 text-ink hover:border-accent-2/70 hover:text-white bg-white/[0.02]",
   white: "bg-white text-bg hover:bg-ink-2",
   ghost: "text-ink-2 hover:text-white",

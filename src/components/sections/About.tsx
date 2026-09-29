@@ -36,7 +36,7 @@ export function About() {
                 <img src={photo} alt={`Portrait of ${site.name}`} className="absolute inset-0 h-full w-full object-cover" />
               ) : (
                 <div className="absolute inset-0 grid place-items-center">
-                  <span className="absolute inset-0 bg-[radial-gradient(60%_50%_at_50%_30%,rgba(124,92,255,.35),transparent_70%)]" />
+                  <span className="absolute inset-0 bg-[radial-gradient(60%_50%_at_50%_30%,rgba(105,94,254,.35),transparent_70%)]" />
                   <span className="text-grad relative text-[clamp(120px,22vw,220px)] font-extrabold leading-none tracking-tighter">{site.name[0]}</span>
                   <span className="absolute bottom-24 font-mono text-[11px] uppercase tracking-[0.2em] text-muted">add /public/me.jpg</span>
                 </div>

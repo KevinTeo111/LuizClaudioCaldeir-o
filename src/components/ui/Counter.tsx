@@ -15,7 +15,7 @@ type Props = {
 /** Number that counts up from zero when it scrolls into view. */
 export function Counter({ value, suffix = "", prefix = "", decimals = 0, duration = 1.6, className }: Props) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-10% 0px" });
+  const inView = useInView(ref, { once: true, amount: 0.5 });
   const reduce = useReducedMotion();
 
   useEffect(() => {

@@ -4,29 +4,45 @@
    Design tokens
    ------------------------------------------------------------------ */
 :root {
-  --bg: #07070d;
-  --bg-2: #0f0f1a;
-  --bg-3: #141424;
-  --line: rgba(255, 255, 255, 0.08);
-  --line-2: rgba(255, 255, 255, 0.14);
-  --ink: #f4f4fb;
-  --ink-2: #d5d5e6;
-  --muted: #9a9ab4;
-  --muted-2: #6f6f8e;
-  --accent: #7c5cff;
-  --accent-2: #22d3ee;
-  --pink: #ff4fd8;
-  --amber: #ffb648;
-  --green: #4ade80;
-  --grad: linear-gradient(92deg, #7c5cff 0%, #22d3ee 100%);
-  --grad-hot: linear-gradient(92deg, #7c5cff 0%, #ff4fd8 100%);
-  --shadow: 0 0 0 1px rgba(255, 255, 255, 0.04), 0 30px 60px -20px rgba(0, 0, 0, 0.7);
-  --glow: 0 0 80px -20px rgba(124, 92, 255, 0.55);
-  --r-l: 28px;
-  --r-m: 20px;
-  --r-s: 14px;
+  --bg: #161626;
+  --bg-2: #27273d;
+  --bg-3: #1c1c2f;
+  --line: #3a3a5a;
+  --line-2: #4a4a70;
+  --ink: #ffffff;
+  --ink-2: #e4e4ef;
+  --muted: #9f9eb4;
+  --muted-2: #7e7ea6;
+  --accent: #695efe;
+  --accent-2: #8881fe;
+  --pink: #ff6af8;
+  --amber: #ffd84d;
+  --green: #5df793;
+  --grad: linear-gradient(92deg, #695efe 0%, #ff6af8 100%);
+  --grad-hot: linear-gradient(92deg, #695efe 0%, #ff6af8 100%);
+  --shadow: 0 0 2px 0 rgba(0, 0, 128, 0.2), 0 20px 40px 0 rgba(0, 0, 0, 0.35);
+  --glow: 0 0 80px -20px rgba(105, 94, 254, 0.55);
+  --r-l: 32px;
+  --r-m: 24px;
+  --r-s: 16px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
-  --max: 1440px;
+  --max: 1520px;
+}
+
+/* light sections (process, certifications) override the tokens, like the reference */
+section.light {
+  background: #f7f7fb;
+  color: #27273d;
+  --bg: #f7f7fb;
+  --bg-2: #ffffff;
+  --bg-3: #f0f0fa;
+  --line: #e4e4ef;
+  --line-2: #d6d6e6;
+  --ink: #27273d;
+  --ink-2: #3a3a5a;
+  --muted: #6f6f90;
+  --muted-2: #7e7ea6;
+  --shadow: 0 0 2px 0 rgba(0, 0, 128, 0.08), 0 20px 40px 0 rgba(0, 0, 128, 0.1);
 }
 
 @theme inline {
@@ -44,7 +60,7 @@
   --color-pink: var(--pink);
   --color-amber: var(--amber);
   --color-green: var(--green);
-  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-raleway), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, monospace;
   --radius-l: var(--r-l);
   --radius-m: var(--r-m);
@@ -82,7 +98,7 @@ body {
 }
 
 ::selection {
-  background: rgba(124, 92, 255, 0.45);
+  background: rgba(105, 94, 254, 0.45);
   color: #fff;
 }
 
@@ -159,15 +175,14 @@ body {
   border: 1px solid var(--line-2);
   border-radius: 999px;
   padding: 8px 16px;
-  background: rgba(34, 211, 238, 0.06);
+  background: rgba(105, 94, 254, 0.08);
 }
 .kicker::before {
   content: "";
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: var(--grad);
-  box-shadow: 0 0 10px var(--accent-2);
 }
 
 @utility h2 {

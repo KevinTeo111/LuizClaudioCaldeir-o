@@ -1,36 +1,7 @@
 import { Reveal, RevealItem } from "@/components/ui/Reveal";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { TiltCard } from "@/components/ui/TiltCard";
-import { services, type Service } from "@/data/services";
-
-const icons: Record<Service["icon"], React.ReactNode> = {
-  layers: (
-    <>
-      <path d="M12 2 2 7l10 5 10-5-10-5z" />
-      <path d="m2 17 10 5 10-5M2 12l10 5 10-5" />
-    </>
-  ),
-  bolt: <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" />,
-  shield: (
-    <>
-      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-      <path d="m9 12 2 2 4-4" />
-    </>
-  ),
-  cloud: <path d="M17.5 19a4.5 4.5 0 0 0 .5-8.98A7 7 0 0 0 4.7 12.4 4 4 0 0 0 6 19h11.5z" />,
-  sparkles: (
-    <>
-      <path d="m12 3 1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3z" />
-      <path d="M19 17l.7 1.8 1.8.7-1.8.7L19 22l-.7-1.8-1.8-.7 1.8-.7L19 17zM5 2l.6 1.4L7 4l-1.4.6L5 6l-.6-1.4L3 4l1.4-.6L5 2z" />
-    </>
-  ),
-  chart: (
-    <>
-      <path d="M3 3v18h18" />
-      <path d="m7 15 4-5 4 3 5-7" />
-    </>
-  ),
-};
+import { services } from "@/data/services";
 
 export function Services() {
   return (
@@ -40,7 +11,7 @@ export function Services() {
           kicker="Services"
           title={
             <>
-              Design. Build. Ship. <span className="text-grad">Keep it running.</span>
+              Design. Build. Test. <span className="text-grad">Launch.</span>
             </>
           }
           sub="One senior engineer, end-to-end delivery. Every project runs from idea to live: designed carefully, engineered properly and supported after launch."
@@ -50,14 +21,7 @@ export function Services() {
           {services.map((s) => (
             <RevealItem key={s.index} className="h-full">
               <TiltCard as="article" tilt={6} className="grad-border flex h-full flex-col rounded-[var(--r-m)] border border-line bg-bg-2 p-8 transition-shadow duration-500 hover:shadow-[var(--shadow),var(--glow)]">
-                <div className="flex items-center justify-between">
-                  <span className="grid size-14 place-items-center rounded-2xl bg-[linear-gradient(135deg,rgba(124,92,255,.25),rgba(34,211,238,.12))] text-accent-2">
-                    <svg viewBox="0 0 24 24" className="size-6" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                      {icons[s.icon]}
-                    </svg>
-                  </span>
-                  <span className="font-mono text-[12px] text-muted-2">{s.index}</span>
-                </div>
+                <span className="inline-grid size-[52px] place-items-center rounded-2xl bg-[rgba(105,94,254,.16)] text-[15px] font-extrabold text-accent-2">{s.index}</span>
                 <h3 className="mt-7 text-[21px] font-extrabold leading-tight tracking-tight">
                   {s.title}
                   <small className="mt-1.5 block text-[11px] font-bold uppercase tracking-[0.14em] text-muted-2">{s.subtitle}</small>

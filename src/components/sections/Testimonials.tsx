@@ -2,13 +2,17 @@
 
 import { motion, useInView } from "motion/react";
 import { useEffect, useRef, useState } from "react";
+import { Reveal, RevealItem } from "@/components/ui/Reveal";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { clientPins, clientStats } from "@/data/services";
+import { site } from "@/data/site";
 import { testimonials } from "@/data/testimonials";
 import { cn, initials } from "@/lib/utils";
 
 /**
- * 3D coverflow: the active card sits centre, neighbours recede and tilt
- * behind it. Autoplays while on screen; arrows, dots and drag navigate.
+ * Reference-style testimonial stage: the active card centred, neighbours
+ * receding at the sides, "Recent" and "Workana Contract" badges, arrows and
+ * dots. Followed by the "My Clients" world-map panel.
  */
 export function Testimonials() {
   const [index, setIndex] = useState(0);
@@ -31,7 +35,6 @@ export function Testimonials() {
 
   return (
     <section id="testimonials" className="relative overflow-hidden py-24 md:py-32">
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(50%_40%_at_50%_60%,rgba(255,79,216,.08),transparent_70%)]" />
       <div className="wrap">
         <SectionHeader
           align="center"
@@ -41,77 +44,122 @@ export function Testimonials() {
               What clients <span className="text-grad">say.</span>
             </>
           }
-          sub="Feedback from founders and engineering leads on delivered contracts."
+          sub="Real feedback from real, verified contracts."
         />
 
-        <div ref={ref} className="relative mt-14 h-[430px] [perspective:1400px] sm:h-[400px]">
+        <div ref={ref} className="relative mt-12 h-[520px] sm:h-[460px]">
           {testimonials.map((t, i) => {
             const d = offsetOf(i);
-            const visible = Math.abs(d) <= 1;
+            const on = d === 0;
             return (
               <motion.article
                 key={t.name}
                 className={cn(
-                  "absolute left-1/2 top-0 flex w-[min(640px,88vw)] cursor-grab flex-col items-center rounded-[var(--r-l)] border p-9 text-center md:p-12",
-                  d === 0 ? "border-line-2 bg-bg-2 shadow-[var(--shadow),var(--glow)]" : "border-line bg-bg-3",
+                  "absolute left-1/2 top-0 flex w-[min(680px,86%)] flex-col items-center rounded-[var(--r-l)] border px-6 pb-10 pt-[76px] text-center md:px-16",
+                  on ? "border-line bg-bg-2 shadow-[var(--shadow)]" : "border-line bg-bg-3",
                 )}
-                style={{ transformStyle: "preserve-3d" }}
                 initial={false}
                 animate={{
-                  x: `calc(-50% + ${d * 66}%)`,
-                  scale: d === 0 ? 1 : 0.82,
-                  rotateY: d * -20,
-                  z: d === 0 ? 0 : -180,
-                  opacity: visible ? (d === 0 ? 1 : 0.28) : 0,
-                  filter: d === 0 ? "blur(0px)" : "blur(2px)",
-                  zIndex: 10 - Math.abs(d),
+                  x: on ? "-50%" : d < 0 ? "-122%" : "22%",
+                  scale: on ? 1 : 0.96,
+                  opacity: Math.abs(d) > 1 ? 0 : on ? 1 : 0.3,
+                  zIndex: on ? 2 : 1,
+                  top: on ? 0 : 26,
                 }}
-                transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-                drag={d === 0 ? "x" : false}
-                dragConstraints={{ left: 0, right: 0 }}
-                dragElastic={0.2}
-                onDragEnd={(_, info) => {
-                  if (info.offset.x < -60) setIndex((v) => (v + 1) % n);
-                  else if (info.offset.x > 60) setIndex((v) => (v - 1 + n) % n);
-                }}
-                onClick={() => d !== 0 && setIndex(i)}
-                aria-hidden={d !== 0}
+                transition={{ duration: 0.55, ease: "easeInOut" }}
+                onClick={() => !on && setIndex(i)}
+                aria-hidden={!on}
               >
-                <span className="grid size-16 place-items-center rounded-full bg-[linear-gradient(135deg,#7c5cff,#22d3ee)] text-[18px] font-extrabold text-white">
-                  {initials(t.name)}
-                </span>
-                <div className="mt-4 text-[16px] font-extrabold">{t.name}</div>
-                <div className="text-[12.5px] font-semibold text-muted">
+                <div className="absolute left-6 right-6 top-5 flex items-center justify-between">
+                  <span className="inline-flex items-center gap-2 rounded-full border border-green/35 bg-green/[0.08] px-3.5 py-1.5 text-[10.5px] font-extrabold uppercase tracking-[0.1em] text-green">
+                    <span className="size-1.5 rounded-full bg-green shadow-[0_0_8px_rgba(93,247,147,.8)]" /> Recent
+                  </span>
+                  <a href={site.workana} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 rounded-full bg-[linear-gradient(92deg,#695efe,#ff6af8)] px-4 py-1.5 text-[10.5px] font-extrabold uppercase tracking-[0.08em] text-white transition hover:-translate-y-0.5">
+                    <svg viewBox="0 0 24 24" className="size-3.5" fill="none" stroke="currentColor" strokeWidth="2.4">
+                      <path d="M9 12l2 2 4-5" />
+                      <circle cx="12" cy="12" r="9" />
+                    </svg>
+                    Workana Contract
+                  </a>
+                </div>
+                <span className="grid size-[74px] place-items-center rounded-full bg-[linear-gradient(92deg,#695efe,#ff6af8)] text-[22px] font-extrabold text-white">{initials(t.name)}</span>
+                <div className="mt-4 text-[15.5px] font-extrabold">{t.name}</div>
+                <div className="mt-1 text-[12px] font-semibold tracking-[0.04em] text-muted">
                   {t.role} · {t.country}
                 </div>
-                <div className="mt-2 text-[14px] tracking-[2px] text-amber">
+                <div className="mt-1 mb-3.5 text-[14px] tracking-[2px] text-amber">
                   {"★".repeat(t.rating)}
-                  <span className="ml-2 font-mono text-[12px] tracking-normal text-ink-2">{t.rating.toFixed(1)}</span>
-                  {t.source ? <span className="ml-2 rounded-full border border-green/40 bg-green/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.1em] text-green">{t.source}</span> : null}
+                  <b className="ml-1.5 text-[13px] tracking-normal text-ink-2">{t.rating.toFixed(1)}</b>
+                  <small className="ml-1 text-[12px] tracking-normal text-muted">· {t.when}</small>
                 </div>
-                <p className="mt-5 max-w-[52ch] text-[16px] italic leading-relaxed text-ink-2">“{t.quote}”</p>
+                <p className="max-w-[52ch] text-[16px] italic leading-relaxed text-ink-2">&ldquo;{t.quote}&rdquo;</p>
               </motion.article>
             );
           })}
         </div>
 
-        <div className="mt-8 flex items-center justify-center gap-4">
-          <button onClick={() => setIndex((v) => (v - 1 + n) % n)} aria-label="Previous testimonial" className="grid size-12 place-items-center rounded-full border border-line-2 text-white transition hover:border-accent hover:bg-accent">
+        <div className="mt-9 flex justify-center gap-3.5">
+          <button onClick={() => setIndex((v) => (v - 1 + n) % n)} aria-label="Previous testimonial" className="grid size-[50px] place-items-center rounded-full border-[1.5px] border-line text-white transition hover:border-accent hover:bg-accent">
             ←
           </button>
-          <div className="flex gap-2">
-            {testimonials.map((t, i) => (
-              <button
-                key={t.name}
-                aria-label={`Go to testimonial ${i + 1}`}
-                onClick={() => setIndex(i)}
-                className={cn("h-2 rounded-full transition-all duration-500", i === index ? "w-8 bg-[linear-gradient(90deg,#7c5cff,#22d3ee)]" : "w-2 bg-white/15 hover:bg-white/30")}
-              />
-            ))}
-          </div>
-          <button onClick={() => setIndex((v) => (v + 1) % n)} aria-label="Next testimonial" className="grid size-12 place-items-center rounded-full border border-line-2 text-white transition hover:border-accent hover:bg-accent">
+          <button onClick={() => setIndex((v) => (v + 1) % n)} aria-label="Next testimonial" className="grid size-[50px] place-items-center rounded-full border-[1.5px] border-line text-white transition hover:border-accent hover:bg-accent">
             →
           </button>
+        </div>
+        <div className="mt-4 flex justify-center gap-2">
+          {testimonials.map((t, i) => (
+            <button key={t.name} aria-label={`Go to testimonial ${i + 1}`} onClick={() => setIndex(i)} className={cn("size-2 rounded-full transition", i === index ? "scale-[1.3] bg-[linear-gradient(92deg,#695efe,#ff6af8)]" : "bg-line")} />
+          ))}
+        </div>
+
+        {/* my clients */}
+        <div className="mt-24">
+          <SectionHeader
+            kicker="My Clients"
+            title={
+              <>
+                Clients around <span className="text-grad">the world.</span>
+              </>
+            }
+            sub="Trusted by clients on four continents, with deep roots in South America and teams across the US, Europe and the Middle East."
+          />
+          <Reveal className="mt-14 grid overflow-hidden rounded-[var(--r-l)] border border-line bg-bg-2 shadow-[var(--shadow)] md:grid-cols-[340px_1fr]" amount={0.2}>
+            <RevealItem className="flex flex-row md:flex-col md:justify-center">
+              {clientStats.map((s) => (
+                <div key={s.label} className="flex flex-1 flex-col items-center gap-2 border-r border-line px-3.5 py-5 text-center last:border-r-0 md:flex-row md:items-center md:gap-5 md:border-b md:border-r-0 md:px-8 md:py-7 md:text-left md:last:border-b-0">
+                  <b className="whitespace-nowrap text-[clamp(28px,2.6vw,40px)] font-black tracking-tight text-accent-2">
+                    <i className="align-[.28em] text-[.62em] not-italic text-pink">+</i>
+                    {s.value}
+                  </b>
+                  <span className="text-[12px] font-semibold leading-snug text-ink-2 md:text-[14px]">{s.label}</span>
+                </div>
+              ))}
+            </RevealItem>
+            <RevealItem className="relative border-t border-line bg-[radial-gradient(900px_420px_at_70%_20%,rgba(105,94,254,.12),transparent_60%)] p-[clamp(14px,2.4vw,34px)] md:border-l md:border-t-0">
+              <div className="relative">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/world-map.svg" alt="World map of client locations" className="w-full opacity-95" />
+                {clientPins.map(([city, left, top, big]) => (
+                  <span
+                    key={city}
+                    className={cn(
+                      "group absolute -translate-x-1/2 -translate-y-full rotate-[-45deg] rounded-[50%_50%_50%_0] shadow-[0_8px_20px_rgba(0,0,0,.5)]",
+                      big
+                        ? "size-[46px] bg-[linear-gradient(160deg,#ffe066,#ff9f2e)] shadow-[0_0_0_7px_rgba(255,216,77,.16),0_12px_30px_rgba(255,170,40,.5)]"
+                        : "size-[34px] bg-[linear-gradient(92deg,#695efe,#ff6af8)]",
+                    )}
+                    style={{ left: `${left}%`, top: `${top}%` }}
+                  >
+                    <span className={cn("absolute rounded-full", big ? "inset-[13px] bg-bg" : "inset-[9px] bg-white")} />
+                    {big ? <span className="absolute -inset-2.5 rounded-[50%_50%_50%_0] border-[2.5px] border-[rgba(255,216,77,.75)] [animation:pulse-ring_1.6s_ease-out_infinite]" /> : null}
+                    <span className="pointer-events-none absolute left-1/2 top-[-12px] -translate-x-1/2 rotate-45 whitespace-nowrap rounded-full border border-line bg-[#10101d] px-3 py-1 text-[11.5px] font-bold text-white opacity-0 transition group-hover:top-[-20px] group-hover:opacity-100">
+                      {city}
+                    </span>
+                  </span>
+                ))}
+              </div>
+            </RevealItem>
+          </Reveal>
         </div>
       </div>
     </section>

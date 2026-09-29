@@ -143,7 +143,7 @@ export function ReelStage({ slides, index, dir, slideMs, className }: StageProps
       {!reduce ? (
         <motion.div
           key={`edge-${index}`}
-          className="pointer-events-none absolute top-[-20%] h-[140%] w-[3px] bg-[linear-gradient(180deg,transparent,#22d3ee,#7c5cff,transparent)] shadow-[0_0_40px_6px_rgba(124,92,255,.45)]"
+          className="pointer-events-none absolute top-[-20%] h-[140%] w-[3px] bg-[linear-gradient(180deg,transparent,#ff6af8,#695efe,transparent)] shadow-[0_0_40px_6px_rgba(105,94,254,.45)]"
           style={{ rotate: 14 }}
           initial={{ left: dir > 0 ? "-30%" : "130%", opacity: 1 }}
           animate={{ left: dir > 0 ? "130%" : "-30%", opacity: [1, 1, 0] }}
@@ -256,7 +256,7 @@ export function ReelProgress({ slides, index, progress, onSelect, onPrev, onNext
           >
             <span className="block h-[3px] overflow-hidden rounded-full bg-white/20 transition-colors group-hover:bg-white/35">
               {i === index ? (
-                <motion.span className="block h-full origin-left bg-[linear-gradient(90deg,#7c5cff,#22d3ee)]" style={{ scaleX: progress }} />
+                <motion.span className="block h-full origin-left bg-[linear-gradient(90deg,#695efe,#ff6af8)]" style={{ scaleX: progress }} />
               ) : i < index ? (
                 <span className="block h-full bg-white/60" />
               ) : null}

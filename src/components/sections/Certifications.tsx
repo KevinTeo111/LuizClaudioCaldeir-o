@@ -5,65 +5,40 @@ import { BrandIcon } from "@/components/ui/BrandIcon";
 import { Lightbox } from "@/components/ui/Lightbox";
 import { Reveal, RevealItem } from "@/components/ui/Reveal";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { TiltCard } from "@/components/ui/TiltCard";
 import { certifications, type Certification } from "@/data/certifications";
 import { cn } from "@/lib/utils";
 
+/** Asymmetric mosaic: 12 columns, 52px rows, tiles spanning 8/6/4 columns like the reference. */
 const spans: Record<Certification["size"], string> = {
-  lg: "md:col-span-7",
-  md: "md:col-span-5",
-  sm: "md:col-span-4",
+  lg: "md:[grid-column:span_8] md:[grid-row:span_6]",
+  md: "md:[grid-column:span_6] md:[grid-row:span_6]",
+  sm: "md:[grid-column:span_4] md:[grid-row:span_6]",
 };
 
-/** Credential card rendered from data (issuer mark, title, id) with a holographic sheen. */
-function CertCard({ c, large = false }: { c: Certification; large?: boolean }) {
+/** Certificate face: the real image when one exists, otherwise a document rendered from the credential data. */
+function CertFace({ c, large = false }: { c: Certification; large?: boolean }) {
+  if (c.image) {
+    // eslint-disable-next-line @next/next/no-img-element
+    return <img src={c.image} alt={c.title} className="absolute inset-0 h-full w-full object-cover" loading="lazy" />;
+  }
   return (
-    <div className={cn("relative flex h-full flex-col overflow-hidden rounded-[var(--r-m)] border border-line bg-bg-2", large ? "p-9 md:p-12" : "p-6 md:p-7")}>
-      {/* holo sheen */}
-      <span className="pointer-events-none absolute -inset-1 bg-[conic-gradient(from_200deg_at_80%_0%,rgba(124,92,255,.22),rgba(34,211,238,.14),rgba(255,79,216,.14),transparent_60%)] opacity-70" />
-      <span className="pointer-events-none absolute inset-0 shimmer opacity-40" />
-      {c.image ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img src={c.image} alt={c.title} className="relative mb-5 w-full rounded-xl border border-line-2 object-cover" />
-      ) : null}
-      <div className="relative flex items-start justify-between gap-4">
-        <span className="grid size-14 shrink-0 place-items-center rounded-2xl bg-white/[0.06] ring-1 ring-white/[0.08]">
+    <div className={cn("absolute inset-0 flex flex-col bg-[linear-gradient(160deg,#ffffff,#eef0fa)] text-[#27273d]", large ? "p-10" : "p-6")}>
+      <div className="absolute inset-3 rounded-lg border border-[#c9c9e0]" />
+      <div className="absolute inset-4 rounded-md border border-[#e4e4ef]" />
+      <div className="relative flex items-center justify-between">
+        <span className="grid size-12 place-items-center rounded-xl bg-white shadow-[0_2px_10px_rgba(0,0,128,.08)]">
           <BrandIcon slug={c.issuerId} label={c.issuer} className="size-7" color />
         </span>
-        <span className="rounded-full border border-line-2 px-3 py-1 font-mono text-[11px] text-muted">{c.date}</span>
+        <span className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#7e7ea6]">{c.issuer}</span>
       </div>
-      <div className="relative mt-6">
-        <div className="text-[12px] font-bold uppercase tracking-[0.14em] text-accent-2">{c.issuer}</div>
-        <h3 className={cn("mt-1.5 font-extrabold leading-tight tracking-tight", large ? "text-[clamp(22px,2.2vw,30px)]" : "text-[18px]")}>{c.title}</h3>
+      <div className="relative mt-auto">
+        <div className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-accent">Certificate of completion</div>
+        <div className={cn("mt-1.5 font-black leading-tight", large ? "text-[30px]" : "text-[18px]")}>{c.title}</div>
+        <div className="mt-2 text-[12px] font-semibold text-[#6f6f90]">
+          Issued {c.date} · ID {c.credentialId ?? "—"}
+        </div>
       </div>
-      <div className="relative mt-4 flex flex-wrap gap-1.5">
-        {c.skills.map((s) => (
-          <span key={s} className="rounded-full bg-white/[0.05] px-2.5 py-1 text-[11.5px] font-semibold text-ink-2">
-            {s}
-          </span>
-        ))}
-      </div>
-      <div className="relative mt-auto flex items-end justify-between gap-3 pt-6">
-        <span className="font-mono text-[11px] text-muted-2">
-          ID · {c.credentialId ?? "—"}
-        </span>
-        {c.verifyUrl ? (
-          <a
-            href={c.verifyUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={(e) => e.stopPropagation()}
-            className="text-[12.5px] font-extrabold text-pink hover:text-white"
-          >
-            Verify credential →
-          </a>
-        ) : null}
-      </div>
-      {c.placeholder ? (
-        <span className="absolute -right-10 top-5 rotate-45 bg-amber px-12 py-1 text-[10px] font-extrabold uppercase tracking-[0.2em] text-bg">
-          sample
-        </span>
-      ) : null}
+      {c.placeholder ? <span className="absolute left-1/2 top-6 -translate-x-1/2 bg-amber px-4 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-[#27273d]">sample</span> : null}
     </div>
   );
 }
@@ -73,7 +48,7 @@ export function Certifications() {
   const open = idx !== null ? certifications[idx] : null;
 
   return (
-    <section id="certifications" className="relative py-24 md:py-32">
+    <section id="certifications" className="light relative py-24 md:py-32">
       <div className="wrap">
         <SectionHeader
           kicker="Certifications"
@@ -82,17 +57,23 @@ export function Certifications() {
               Verified <span className="text-grad">credentials.</span>
             </>
           }
-          sub="Click any credential to enlarge it. Each one links to its issuer's verification page."
+          sub="Click any certificate to view it full size. Each one links to the issuer's verification page."
         />
 
-        <Reveal className="mt-14 grid gap-4 md:grid-cols-12" amount={0.1} stagger={0.08}>
+        <Reveal className="mt-13 grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-12 md:[grid-auto-rows:52px]" amount={0.1} stagger={0.08}>
           {certifications.map((c, i) => (
-            <RevealItem key={c.title} className={cn("h-full", spans[c.size])}>
-              <TiltCard tilt={5} lift={6} className="h-full cursor-zoom-in rounded-[var(--r-m)]" as="div">
-                <div onClick={() => setIdx(i)} className="h-full" role="button" tabIndex={0} onKeyDown={(e) => e.key === "Enter" && setIdx(i)}>
-                  <CertCard c={c} />
+            <RevealItem key={c.title} className={cn("aspect-[3/2] md:aspect-auto", spans[c.size])}>
+              <figure
+                onClick={() => setIdx(i)}
+                className="group relative h-full w-full cursor-zoom-in overflow-hidden rounded-[var(--r-s)] border border-line bg-bg-2 transition duration-[.35s] hover:z-[2] hover:-translate-y-1 hover:border-accent hover:shadow-[var(--shadow)]"
+              >
+                <div className="absolute inset-0 transition-transform duration-500 group-hover:scale-[1.03]">
+                  <CertFace c={c} />
                 </div>
-              </TiltCard>
+                <figcaption className="absolute bottom-3 left-3 z-[2] max-w-[calc(100%-24px)] truncate rounded-full border border-white/15 bg-[rgba(16,16,29,.72)] px-3.5 py-1.5 text-[10.5px] font-extrabold uppercase tracking-[0.08em] text-white backdrop-blur">
+                  {c.title}
+                </figcaption>
+              </figure>
             </RevealItem>
           ))}
         </Reveal>
@@ -106,8 +87,13 @@ export function Certifications() {
         caption={open?.title}
       >
         {open ? (
-          <div className="w-[min(760px,90vw)]">
-            <CertCard c={open} large />
+          <div className="relative aspect-[3/2] w-[min(960px,92vw)] overflow-hidden rounded-2xl shadow-[0_40px_120px_rgba(0,0,0,.6)]">
+            <CertFace c={open} large />
+            {open.verifyUrl ? (
+              <a href={open.verifyUrl} target="_blank" rel="noopener noreferrer" className="absolute bottom-6 right-6 rounded-full bg-accent px-4 py-2 text-[12.5px] font-extrabold text-white">
+                Verify credential →
+              </a>
+            ) : null}
           </div>
         ) : null}
       </Lightbox>
