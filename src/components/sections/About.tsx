@@ -1,6 +1,7 @@
 import { existsSync } from "node:fs";
 import path from "node:path";
-import { ArrowIcon, Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/Button";
+import { WorkanaButton } from "@/components/ui/WorkanaButton";
 import { Reveal, RevealItem } from "@/components/ui/Reveal";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { site } from "@/data/site";
@@ -72,9 +73,7 @@ export function About() {
               ))}
             </div>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Button href="#contact">
-                Work with me <ArrowIcon />
-              </Button>
+              <WorkanaButton />
               <Button href={site.socials[1].href} variant="line" target="_blank">
                 LinkedIn
               </Button>

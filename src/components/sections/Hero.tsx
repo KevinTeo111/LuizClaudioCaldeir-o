@@ -5,7 +5,8 @@ import { useRef } from "react";
 import { useIntro } from "@/components/providers/Intro";
 import { useLenis } from "@/components/providers/SmoothScroll";
 import { ReelCaption, ReelLabel, ReelProgress, ReelStage, useReel } from "@/components/showreel/IndustryReel";
-import { ArrowIcon, Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/Button";
+import { WorkanaButton } from "@/components/ui/WorkanaButton";
 import { Counter } from "@/components/ui/Counter";
 import { projects } from "@/data/projects";
 import { reel } from "@/data/showreel";
@@ -99,11 +100,9 @@ export function Hero() {
             animate={ready ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9, delay: 1.1, ease }}
           >
-            <Button href="#work" size="lg">
-              See the work <ArrowIcon />
-            </Button>
-            <Button href="#contact" variant="line" size="lg">
-              Start a project
+            <WorkanaButton size="lg" />
+            <Button href="#work" variant="line" size="lg">
+              See the work
             </Button>
           </motion.div>
         </div>

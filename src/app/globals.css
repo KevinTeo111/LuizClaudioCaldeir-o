@@ -272,6 +272,15 @@ body {
     opacity: 0;
   }
 }
+@keyframes sheen {
+  0%,
+  35% {
+    transform: translateX(0) skewX(-12deg);
+  }
+  100% {
+    transform: translateX(400%) skewX(-12deg);
+  }
+}
 @keyframes scan {
   0% {
     transform: translateY(-100%);

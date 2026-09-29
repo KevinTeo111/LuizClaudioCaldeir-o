@@ -10,6 +10,7 @@ export const site = {
   location: "São Paulo, Brazil · Remote worldwide",
   email: "hello@luizclaudio.dev", // EDIT
   availability: "Open for new projects",
+  workana: "https://www.workana.com/freelancer/5aa15a6f0ebb0a8d3454eed8e0e256a9",
   url: "https://luizclaudio.dev", // EDIT: production URL (used for metadata)
   description:
     "Luiz Claudio, senior full-stack engineer: SaaS platforms, marketplaces, realtime systems and AI-powered products with Next.js, NestJS, PostgreSQL and Supabase.",

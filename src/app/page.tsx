@@ -15,6 +15,7 @@ import { Skills } from "@/components/sections/Skills";
 import { StackStrip } from "@/components/sections/StackStrip";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { Cursor } from "@/components/ui/Cursor";
+import { FloatingWorkana } from "@/components/ui/WorkanaButton";
 
 export default function Page() {
   return (
@@ -37,6 +38,7 @@ export default function Page() {
           <Contact />
         </main>
         <Footer />
+        <FloatingWorkana />
       </IntroProvider>
     </SmoothScroll>
   );

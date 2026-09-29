@@ -3,7 +3,7 @@
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 import { useEffect, useState } from "react";
 import { useLenis } from "@/components/providers/SmoothScroll";
-import { Button, ArrowIcon } from "@/components/ui/Button";
+import { WorkanaButton } from "@/components/ui/WorkanaButton";
 import { nav, site } from "@/data/site";
 import { cn } from "@/lib/utils";
 
@@ -90,9 +90,7 @@ export function Header() {
           </nav>
 
           <div className="hidden lg:block">
-            <Button href="#contact" size="sm">
-              Let&apos;s talk <ArrowIcon />
-            </Button>
+            <WorkanaButton size="sm" label="Meet Luiz on Workana" />
           </div>
 
           <button
@@ -158,9 +156,7 @@ export function Header() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
               >
-                <Button href="#contact" size="lg" onClick={() => setOpen(false)} className="w-full">
-                  Let&apos;s talk <ArrowIcon />
-                </Button>
+                <WorkanaButton size="lg" className="w-full justify-center" />
               </motion.div>
             </nav>
           </motion.div>

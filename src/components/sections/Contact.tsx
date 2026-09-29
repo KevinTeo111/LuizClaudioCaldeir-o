@@ -1,5 +1,6 @@
 import { BrandIcon } from "@/components/ui/BrandIcon";
 import { ArrowIcon, Button } from "@/components/ui/Button";
+import { WorkanaButton } from "@/components/ui/WorkanaButton";
 import { Reveal, RevealItem } from "@/components/ui/Reveal";
 import { site } from "@/data/site";
 
@@ -27,6 +28,7 @@ export function Contact() {
             </p>
           </RevealItem>
           <RevealItem className="mt-9 flex flex-wrap items-center justify-center gap-3">
+            <WorkanaButton size="lg" className="ring-2 ring-white/60" />
             <Button href={`mailto:${site.email}`} variant="white" size="lg">
               {site.email} <ArrowIcon />
             </Button>
