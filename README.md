@@ -32,13 +32,27 @@ npm run lint       # eslint
 exception on the Windows machine this was built on. Remove the flag to use
 Turbopack where it works.
 
+## Deploy
+
+`.github/workflows/ci.yaml` runs on every push and pull request: install, typecheck, lint
+and build. A push to `main` then deploys to production on Vercel; a pull request gets a
+preview deployment with its URL in the job summary.
+
+One-time setup:
+
+1. `npx vercel link` locally once, then copy `orgId` and `projectId` from `.vercel/project.json`.
+2. Create a token at vercel.com/account/tokens.
+3. Add the three repository secrets `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`.
+
+After that, `git push origin main` is the whole release process.
+
 ## Edit the content
 
 All copy lives in `src/data`; nothing personal is hard-coded in components.
 
 | File                          | What it holds                                              |
 | ----------------------------- | ---------------------------------------------------------- |
-| `site.ts`                     | name, role, location, email, Workana link, socials, stats   |
+| `site.ts`                     | name, role, location, email, Workana link, socials, stats  |
 | `projects.ts`                 | featured + more projects, metrics, stack, scene, image     |
 | `showreel.ts`                 | hero clips: industry, one-line story, linked project, video|
 | `services.ts`                 | the six service cards                                      |
