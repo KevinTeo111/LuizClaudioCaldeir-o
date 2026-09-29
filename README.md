@@ -34,17 +34,14 @@ Turbopack where it works.
 
 ## Deploy
 
-`.github/workflows/ci.yaml` runs on every push and pull request: install, typecheck, lint
-and build. A push to `main` then deploys to production on Vercel; a pull request gets a
-preview deployment with its URL in the job summary.
+`.github/workflows/ci.yaml` is a quality gate: every push and pull request runs
+install, typecheck, lint and build.
 
-One-time setup:
-
-1. `npx vercel link` locally once, then copy `orgId` and `projectId` from `.vercel/project.json`.
-2. Create a token at vercel.com/account/tokens.
-3. Add the three repository secrets `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`.
-
-After that, `git push origin main` is the whole release process.
+Deployment is done by Vercel's GitHub integration on the repository connected to
+the Vercel project, so a push to `main` becomes a production deployment and a pull
+request a preview, with no tokens or secrets in this repo. The `origin` remote is
+configured to push to both GitHub repositories at once, so `git push` is the whole
+release process.
 
 ## Edit the content
 
