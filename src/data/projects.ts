@@ -22,6 +22,8 @@ export type Project = {
   metric: { value: string; label: string };
   stack: string[];
   scene: SceneKey;
+  /** still image of the product (public/work), used where the live scene is not rendered */
+  image?: string;
   video?: string;
   href?: string;
   year: string;
@@ -32,6 +34,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "digital-marketplace",
+    image: "/work/digital-marketplace.jpg",
     title: "Multi-vendor Digital Marketplace",
     kicker: "Marketplace · Payments",
     summary:
@@ -59,6 +62,7 @@ export const projects: Project[] = [
   },
   {
     slug: "karaoke-venue",
+    image: "/work/karaoke-venue.jpg",
     title: "Cacho e' Cabra · Realtime Karaoke",
     kicker: "Realtime · Multi-device",
     summary:
@@ -84,6 +88,7 @@ export const projects: Project[] = [
   },
   {
     slug: "voltra-electronics",
+    image: "/work/voltra-electronics.jpg",
     title: "Voltra · Electronics Storefront",
     kicker: "E-commerce · Mobile-first",
     summary:
@@ -108,6 +113,7 @@ export const projects: Project[] = [
   },
   {
     slug: "saas-analytics",
+    image: "/work/saas-analytics.jpg",
     title: "Multi-tenant Analytics SaaS",
     kicker: "SaaS · Data",
     summary:
@@ -125,6 +131,7 @@ export const projects: Project[] = [
   },
   {
     slug: "ai-ops-assistant",
+    image: "/work/ai-ops-assistant.jpg",
     title: "AI Operations Assistant",
     kicker: "AI · Automation",
     summary:
@@ -142,6 +149,7 @@ export const projects: Project[] = [
   },
   {
     slug: "calder-whitlock",
+    image: "/work/calder-whitlock.jpg",
     title: "Calder & Whitlock LLP",
     kicker: "Brand site · SSG",
     summary:
@@ -225,12 +233,4 @@ export const projects: Project[] = [
 
 export const featuredProjects = projects.filter((p) => p.featured);
 
-export const projectFilters = [
-  { id: "all", label: "All" },
-  { id: "saas", label: "SaaS" },
-  { id: "ecommerce", label: "E-commerce" },
-  { id: "realtime", label: "Realtime" },
-  { id: "mobile", label: "Mobile" },
-  { id: "ai", label: "AI" },
-  { id: "web", label: "Web" },
-] as const;
+export const moreProjects = projects.filter((p) => !p.featured);

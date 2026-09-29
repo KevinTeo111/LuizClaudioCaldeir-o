@@ -21,19 +21,19 @@ const jetbrains = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — ${site.role}`,
-    template: `%s — ${site.name}`,
+    default: `${site.fullName} — ${site.role}`,
+    template: `%s — ${site.fullName}`,
   },
   description: site.description,
   openGraph: {
-    title: `${site.name} — ${site.role}`,
+    title: `${site.fullName} — ${site.role}`,
     description: site.description,
     type: "website",
     url: site.url,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — ${site.role}`,
+    title: `${site.fullName} — ${site.role}`,
     description: site.description,
   },
   robots: { index: true, follow: true },

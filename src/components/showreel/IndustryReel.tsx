@@ -190,26 +190,35 @@ export function ReelLabel({ slide, index, total }: { slide: ReelSlide; index: nu
   );
 }
 
-export function ReelCaption({ slide, onOpen }: { slide: ReelSlide; onOpen: () => void }) {
+export function ReelCaption({ slide, image, onOpen }: { slide: ReelSlide; image?: string; onOpen: () => void }) {
   return (
     <div className="relative min-h-[112px]">
       <AnimatePresence mode="sync">
         <motion.div
           key={slide.key}
-          className="absolute inset-x-0 bottom-0 max-w-[440px]"
+          className="absolute inset-x-0 bottom-0 flex max-w-[520px] items-end gap-4"
           initial={{ opacity: 0, y: 24, filter: "blur(6px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           exit={{ opacity: 0, y: -16, filter: "blur(6px)" }}
           transition={{ duration: 0.8, ease: textEase, delay: 0.15 }}
         >
-          <span className="block truncate font-mono text-[11px] uppercase tracking-[0.24em] text-accent-2">Shipped · {slide.projectTitle}</span>
-          <p className="mt-1.5 line-clamp-2 text-[15px] font-semibold leading-snug text-ink-2">{slide.line}</p>
-          <button onClick={onOpen} className="group mt-2 inline-flex items-center gap-1.5 text-[13px] font-extrabold text-white">
-            See the case
-            <svg viewBox="0 0 24 24" className="size-3.5 transition-transform duration-500 group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M5 12h14M13 6l6 6-6 6" />
-            </svg>
-          </button>
+          {image ? (
+            <button onClick={onOpen} className="group relative hidden w-[132px] shrink-0 overflow-hidden rounded-xl border border-white/20 shadow-[0_20px_40px_-16px_rgba(0,0,0,.8)] sm:block" aria-label={`Open ${slide.projectTitle}`}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={image} alt="" className="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+              <span className="absolute inset-0 bg-[linear-gradient(180deg,transparent_50%,rgba(7,7,13,.6))]" />
+            </button>
+          ) : null}
+          <div className="min-w-0">
+            <span className="block truncate font-mono text-[11px] uppercase tracking-[0.24em] text-accent-2">Shipped · {slide.projectTitle}</span>
+            <p className="mt-1.5 line-clamp-2 text-[15px] font-semibold leading-snug text-ink-2">{slide.line}</p>
+            <button onClick={onOpen} className="group mt-2 inline-flex items-center gap-1.5 text-[13px] font-extrabold text-white">
+              See the case
+              <svg viewBox="0 0 24 24" className="size-3.5 transition-transform duration-500 group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </button>
+          </div>
         </motion.div>
       </AnimatePresence>
     </div>

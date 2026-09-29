@@ -37,7 +37,7 @@ export function Footer() {
           </div>
         </div>
         <div className="flex flex-wrap justify-between gap-3 border-t border-line pt-6 text-[12.5px] font-medium">
-          <span>© {new Date().getFullYear()} {site.name}. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} {site.fullName}. All rights reserved.</span>
           <span className="font-mono text-[11.5px] tracking-wide">
             Next.js 16 · React 19 · Tailwind 4 · Motion · Lenis
           </span>

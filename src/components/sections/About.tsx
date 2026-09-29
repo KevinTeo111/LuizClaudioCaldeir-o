@@ -50,7 +50,10 @@ export function About() {
           </RevealItem>
 
           <RevealItem>
-            <h3 className="text-[clamp(24px,2.4vw,32px)] font-extrabold tracking-tight">{site.role}</h3>
+            <h3 className="text-[clamp(24px,2.4vw,32px)] font-extrabold tracking-tight">
+              {site.fullName}
+              <span className="mt-1 block text-[15px] font-bold uppercase tracking-[0.14em] text-accent-2">{site.role}</span>
+            </h3>
             <p className="mt-4 max-w-[58ch] text-[15.5px] font-medium text-muted">
               I&apos;ve spent eight years building web and mobile products for startups, agencies and a SaaS scale-up,
               from the first wireframe to the production deploy. I care about the whole thing: an interface that feels

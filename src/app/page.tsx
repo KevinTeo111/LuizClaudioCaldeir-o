@@ -9,9 +9,10 @@ import { Contact } from "@/components/sections/Contact";
 import { Experience } from "@/components/sections/Experience";
 import { FeaturedWork } from "@/components/sections/FeaturedWork";
 import { Hero } from "@/components/sections/Hero";
-import { ProjectGrid } from "@/components/sections/ProjectGrid";
+import { MoreWork } from "@/components/sections/MoreWork";
 import { Services } from "@/components/sections/Services";
 import { Skills } from "@/components/sections/Skills";
+import { StackStrip } from "@/components/sections/StackStrip";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { Cursor } from "@/components/ui/Cursor";
 
@@ -24,13 +25,14 @@ export default function Page() {
         <Header />
         <main>
           <Hero />
+          <StackStrip />
           <FeaturedWork />
-          <Services />
-          <ProjectGrid />
-          <Experience />
+          <MoreWork />
           <Skills />
+          <Experience />
           <Certifications />
           <Testimonials />
+          <Services />
           <About />
           <Contact />
         </main>

@@ -1,31 +1,30 @@
 /**
  * Site-wide profile and copy.
- * EDIT: everything in this file is personal data — update to match Luiz.
+ * EDIT: everything in this file is personal data.
  */
 export const site = {
-  name: "Luiz",
-  fullName: "Luiz",
+  name: "Luiz", // short form used in the logo and preloader
+  fullName: "Luiz Claudio",
   role: "Senior Full-Stack Engineer",
-  tagline: "I design and ship products that feel effortless.",
+  tagline: "I design and ship products that work in the real world.",
   location: "São Paulo, Brazil · Remote worldwide",
-  email: "hello@luiz.dev", // EDIT
+  email: "hello@luizclaudio.dev", // EDIT
   availability: "Open for new projects",
-  url: "https://luiz.dev", // EDIT: production URL (used for metadata)
+  url: "https://luizclaudio.dev", // EDIT: production URL (used for metadata)
   description:
-    "Senior full-stack engineer building SaaS platforms, marketplaces, realtime systems and AI-powered products with Next.js, NestJS, PostgreSQL and Supabase.",
+    "Luiz Claudio, senior full-stack engineer: SaaS platforms, marketplaces, realtime systems and AI-powered products with Next.js, NestJS, PostgreSQL and Supabase.",
   socials: [
     { label: "GitHub", href: "https://github.com/", id: "github" }, // EDIT
     { label: "LinkedIn", href: "https://linkedin.com/in/", id: "linkedin" }, // EDIT
-    { label: "Workana", href: "https://www.workana.com/", id: "workana" }, // EDIT
   ],
 } as const;
 
 export const nav = [
   { label: "Work", href: "#work" },
-  { label: "Services", href: "#services" },
-  { label: "Experience", href: "#experience" },
   { label: "Skills", href: "#skills" },
+  { label: "Experience", href: "#experience" },
   { label: "Certifications", href: "#certifications" },
+  { label: "Services", href: "#services" },
   { label: "About", href: "#about" },
 ] as const;
 
@@ -36,13 +35,21 @@ export const heroStats = [
   { value: 100, suffix: "%", label: "Delivered on scope" },
 ] as const;
 
-export const marqueeItems = [
-  "SaaS Platforms",
-  "Marketplaces",
-  "Realtime Systems",
-  "Mobile-first Apps",
-  "AI Automation",
-  "Design Systems",
-  "Payments & Payouts",
-  "Cloud Infrastructure",
+/** Core stack shown in the proof strip under the hero (simple-icons slugs). */
+export const coreStack = [
+  ["nextdotjs", "Next.js"],
+  ["react", "React"],
+  ["typescript", "TypeScript"],
+  ["nestjs", "NestJS"],
+  ["nodedotjs", "Node.js"],
+  ["postgresql", "PostgreSQL"],
+  ["prisma", "Prisma"],
+  ["supabase", "Supabase"],
+  ["redis", "Redis"],
+  ["tailwindcss", "Tailwind CSS"],
+  ["docker", "Docker"],
+  ["amazonwebservices", "AWS"],
+  ["cloudflare", "Cloudflare"],
+  ["stripe", "Stripe"],
+  ["anthropic", "Claude API"],
 ] as const;

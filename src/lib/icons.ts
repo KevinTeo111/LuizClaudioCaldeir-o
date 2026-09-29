@@ -1,25 +1,84 @@
-import * as si from "simple-icons";
+// Explicit named imports so only the brands used on the page reach the bundle
+// (a wildcard import of simple-icons costs ~5 MB of JavaScript).
+import {
+  siAnthropic,
+  siApachekafka,
+  siChakraui,
+  siCloudflare,
+  siDocker,
+  siElasticsearch,
+  siFigma,
+  siFramer,
+  siFreecodecamp,
+  siGit,
+  siGithub,
+  siGithubactions,
+  siGooglecloud,
+  siGraphql,
+  siLangchain,
+  siLinux,
+  siMeta,
+  siMongodb,
+  siNestjs,
+  siNextdotjs,
+  siNginx,
+  siNodedotjs,
+  siPostgresql,
+  siPrisma,
+  siPython,
+  siReact,
+  siRedis,
+  siSocketdotio,
+  siStorybook,
+  siStripe,
+  siSupabase,
+  siTailwindcss,
+  siTypescript,
+  siVercel,
+  siVitest,
+  siVuedotjs,
+} from "simple-icons";
 
 export type BrandIcon = { title: string; path: string; hex: string };
 
-const cache = new Map<string, BrandIcon | null>();
-
-/**
- * Looks up a simple-icons brand by slug (e.g. "nextdotjs").
- * Returns null when the brand is not in the icon set so callers can
- * render a lettered fallback instead.
- */
-export function getBrandIcon(slug: string): BrandIcon | null {
-  if (cache.has(slug)) return cache.get(slug)!;
-  const key = `si${slug.charAt(0).toUpperCase()}${slug.slice(1)}` as keyof typeof si;
-  const icon = si[key] as { title: string; path: string; hex: string } | undefined;
-  const value = icon ? { title: icon.title, path: icon.path, hex: icon.hex } : null;
-  cache.set(slug, value);
-  return value;
-}
-
-/** Hand-drawn marks for brands that simple-icons no longer ships. */
-export const customMarks: Record<string, BrandIcon> = {
+const brands: Record<string, BrandIcon> = {
+  anthropic: siAnthropic,
+  apachekafka: siApachekafka,
+  chakraui: siChakraui,
+  cloudflare: siCloudflare,
+  docker: siDocker,
+  elasticsearch: siElasticsearch,
+  figma: siFigma,
+  framer: siFramer,
+  freecodecamp: siFreecodecamp,
+  git: siGit,
+  github: siGithub,
+  githubactions: siGithubactions,
+  googlecloud: siGooglecloud,
+  graphql: siGraphql,
+  langchain: siLangchain,
+  linux: siLinux,
+  meta: siMeta,
+  mongodb: siMongodb,
+  nestjs: siNestjs,
+  nextdotjs: siNextdotjs,
+  nginx: siNginx,
+  nodedotjs: siNodedotjs,
+  postgresql: siPostgresql,
+  prisma: siPrisma,
+  python: siPython,
+  react: siReact,
+  redis: siRedis,
+  socketdotio: siSocketdotio,
+  storybook: siStorybook,
+  stripe: siStripe,
+  supabase: siSupabase,
+  tailwindcss: siTailwindcss,
+  typescript: siTypescript,
+  vercel: siVercel,
+  vitest: siVitest,
+  vuedotjs: siVuedotjs,
+  // brands simple-icons no longer ships
   linkedin: {
     title: "LinkedIn",
     hex: "0A66C2",
@@ -37,6 +96,7 @@ export const customMarks: Record<string, BrandIcon> = {
   },
 };
 
+/** Brand by slug, or null so the caller can render a lettered mark. */
 export function resolveIcon(slug: string): BrandIcon | null {
-  return customMarks[slug] ?? getBrandIcon(slug);
+  return brands[slug] ?? null;
 }

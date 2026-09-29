@@ -7,6 +7,7 @@ import { useLenis } from "@/components/providers/SmoothScroll";
 import { ReelCaption, ReelLabel, ReelProgress, ReelStage, useReel } from "@/components/showreel/IndustryReel";
 import { ArrowIcon, Button } from "@/components/ui/Button";
 import { Counter } from "@/components/ui/Counter";
+import { projects } from "@/data/projects";
 import { reel } from "@/data/showreel";
 import { heroStats, site } from "@/data/site";
 
@@ -24,6 +25,7 @@ export function Hero() {
   const lenis = useLenis();
   const r = useReel(reel.length, SLIDE_MS);
   const slide = reel[r.index];
+  const image = projects.find((p) => p.slug === slide.project)?.image;
 
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
@@ -62,8 +64,8 @@ export function Hero() {
             animate={ready ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.5, ease }}
           >
-            {site.role}
-            <span className="hidden sm:inline"> · {site.availability}</span>
+            {site.fullName} · {site.role}
+            <span className="hidden lg:inline"> · {site.availability}</span>
           </motion.span>
 
           <h1 className="mt-6 text-[clamp(36px,5.2vw,76px)] font-extrabold leading-[0.98] tracking-[-0.04em]">
@@ -114,7 +116,7 @@ export function Hero() {
           transition={{ duration: 1, delay: 1.4, ease }}
         >
           <div className="order-2 md:order-1">
-            <ReelCaption slide={slide} onOpen={openCase} />
+            <ReelCaption slide={slide} image={image} onOpen={openCase} />
           </div>
           <div className="order-1 md:order-2">
             <ReelLabel slide={slide} index={r.index} total={reel.length} />

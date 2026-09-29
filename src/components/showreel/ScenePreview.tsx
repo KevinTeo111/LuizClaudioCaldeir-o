@@ -10,7 +10,7 @@ type Props = {
   scene: SceneKey;
   video?: string;
   className?: string;
-  /** aspect ratio class, defaults to 16/10 */
+  /** aspect ratio class, defaults to 16/10; pass "" when the parent sizes it */
   ratio?: string;
 };
 
@@ -18,17 +18,13 @@ type Props = {
 export function ScenePreview({ scene, video, className, ratio = "aspect-[16/10]" }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { amount: 0.2 });
-  const { Component } = scenes[scene];
+  const Scene = scenes[scene];
   return (
-    <div
-      ref={ref}
-      className={cn("@container relative isolate w-full overflow-hidden bg-bg-3", ratio, className)}
-      data-cursor
-    >
+    <div ref={ref} className={cn("@container relative isolate w-full overflow-hidden bg-bg-3", ratio, className)} data-cursor>
       {video ? (
         <video className="absolute inset-0 h-full w-full object-cover" src={video} autoPlay muted loop playsInline />
       ) : (
-        <Component active={inView} />
+        <Scene active={inView} />
       )}
     </div>
   );

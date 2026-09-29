@@ -1,9 +1,7 @@
-import { Marquee } from "@/components/ui/Marquee";
 import { Reveal, RevealItem } from "@/components/ui/Reveal";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { TiltCard } from "@/components/ui/TiltCard";
 import { services, type Service } from "@/data/services";
-import { marqueeItems } from "@/data/site";
 
 const icons: Record<Service["icon"], React.ReactNode> = {
   layers: (
@@ -37,20 +35,9 @@ const icons: Record<Service["icon"], React.ReactNode> = {
 export function Services() {
   return (
     <section id="services" className="relative py-24 md:py-32">
-      <div className="border-y border-line py-5">
-        <Marquee speed={38}>
-          {marqueeItems.map((m) => (
-            <span key={m} className="flex items-center gap-8 px-4 text-[clamp(20px,2.4vw,34px)] font-extrabold tracking-tight text-ink-2/80">
-              {m}
-              <span className="size-2 rounded-full bg-[linear-gradient(90deg,#7c5cff,#22d3ee)]" />
-            </span>
-          ))}
-        </Marquee>
-      </div>
-
-      <div className="wrap mt-20">
+      <div className="wrap">
         <SectionHeader
-          kicker="What I do"
+          kicker="Services"
           title={
             <>
               Design. Build. Ship. <span className="text-grad">Keep it running.</span>

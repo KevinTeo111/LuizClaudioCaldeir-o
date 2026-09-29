@@ -38,7 +38,7 @@ All copy lives in `src/data`; nothing personal is hard-coded in components.
 
 | File                          | What it holds                                              |
 | ----------------------------- | ---------------------------------------------------------- |
-| `site.ts`                     | name, role, location, email, socials, hero stats, marquee  |
+| `site.ts`                     | name, role, location, email, socials, hero stats, core stack|
 | `projects.ts`                 | featured + grid projects, metrics, stack, scene per project|
 | `showreel.ts`                 | hero clips: industry, one-line story, linked project, video|
 | `services.ts`                 | the six service cards                                      |
@@ -50,6 +50,8 @@ All copy lives in `src/data`; nothing personal is hard-coded in components.
 Optional assets:
 
 - `public/me.jpg` — portrait for the About section (a generated frame shows until it exists).
+- `public/work/*.jpg` — product images of the featured projects (captured from the live scenes);
+  they appear as thumbnails in the hero captions. `src/app/opengraph-image.jpg` is the link preview.
 - `public/certs/*.png` — set `image` on a certification to show the real certificate.
 - `public/hero/*.mp4` + `.jpg` — the hero clips (6 s, 720p, ~1 MB each, sourced from Mixkit's
   free licence) and their poster frames. Swap any of them for your own footage or a screen
@@ -62,8 +64,9 @@ Optional assets:
 src/app                 layout, page, globals.css, icon.svg, fonts
 src/data                all editable content
 src/components/layout   Preloader, Header, Footer
-src/components/sections Hero, FeaturedWork, Services, ProjectGrid, Experience,
-                        Skills, Certifications, Testimonials, About, Contact
+src/components/sections Hero, StackStrip, FeaturedWork (sticky stack), MoreWork (accordion),
+                        Skills, Experience (accordion timeline), Certifications,
+                        Testimonials, Services, About, Contact
 src/components/showreel IndustryReel (hero footage: autoplay, diagonal wipe, label,
                         caption, progress), ScenePreview and the six coded demo scenes
 src/components/ui       Reveal, TiltCard, Button (magnetic), Marquee, Lightbox,
